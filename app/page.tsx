@@ -1,3 +1,9 @@
+import Navigation from "./components/Navigation";
+
 export default function Home() {
-  return <h1>Hello next im sahil.</h1>;
+  return (
+    <div>
+      <h1>Hello next im sahil.</h1>;
+    </div>
+  );
 }
