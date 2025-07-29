@@ -2,8 +2,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import React from "react";
-import { NextPage } from "next";
-import Counter from "@/app/_components/Counter";
+import { Metadata, NextPage } from "next";
+
+export const metadata: Metadata = {
+  title: "Cabins ",
+};
 
 const Page: NextPage = async () => {
   return (
