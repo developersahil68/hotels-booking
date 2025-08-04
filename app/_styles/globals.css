@@ -4,7 +4,7 @@
 
 /* @import "tailwindcss"; */
 
-/* @layer components {
+@layer components {
   .spinner {
     margin: 3.2rem auto 1.6rem;
     width: 60px;
@@ -32,10 +32,9 @@
   }
 }
 
-
 .rdp {
   --rdp-cell-size: 32px !important;
   --rdp-accent-color: theme("colors.accent.500") !important;
   --rdp-background-color: theme("colors.accent.600") !important;
   margin: 0 !important;
-} */
+}
