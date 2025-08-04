@@ -2,10 +2,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import CabinCard from "@/app/_components/CabinCard";
+import { getCabins } from "../_lib/data-service";
 
-export default function Page() {
+export default async function Page() {
   // CHANGE
-  const cabins: any = [];
+  const cabins: any = await getCabins();
+  console.log(cabins);
 
   return (
     <div>
