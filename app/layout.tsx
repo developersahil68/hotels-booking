@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navigation from "./_components/Navigation";
 import Logo from "./_components/Logo";
+import "react-day-picker/dist/style.css";
 
 import { Josefin_Sans } from "next/font/google";
 
@@ -12,6 +13,7 @@ const josefin = Josefin_Sans({
 
 import "@/app/_styles/globals.css";
 import Header from "./_components/Header";
+import { ReservationProvider } from "./_components/ReservationContext";
 
 // This is good for SEO
 export const metadata: Metadata = {
@@ -35,7 +37,9 @@ export default function RootLayout({
       >
         <Header />
         <div className="flex-1 px-8 py-12 grid">
-          <main className="max-w-7xl mx-auto w-full">{children}</main>
+          <main className="max-w-7xl mx-auto w-full">
+            <ReservationProvider>{children}</ReservationProvider>
+          </main>
         </div>
       </body>
     </html>
