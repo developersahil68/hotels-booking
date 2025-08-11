@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import Link from "next/link";
 import { auth } from "../_lib/auth";
 
@@ -32,7 +34,7 @@ export default async function Navigation() {
               <img
                 className="h-8 rounded-full"
                 src={session.user.image}
-                alt={session.user.name}
+                alt={session.user.name!}
                 referrerPolicy="no-referrer"
               />
               <span>Guest area</span>
