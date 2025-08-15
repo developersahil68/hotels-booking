@@ -15,7 +15,7 @@ const authConfig = {
     authorized({ auth, request }: any) {
       return !!auth?.user;
     },
-    async signIn({ user, account, profile }: any) {
+    async signIn({ user, accounts, profile }: any) {
       try {
         const existingGuest = await getGuest(user.email);
 
