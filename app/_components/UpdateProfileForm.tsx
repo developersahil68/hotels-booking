@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import React, { useState } from "react";
-import SelectCountry from "./SelectCountry";
+import React from "react";
+
 import { updateGuest } from "../_lib/actions";
-import { useFormStatus } from "react-dom";
+
 import SubmitButton from "./SubmitButton";
 
 export default function UpdateProfileForm({ guest, children }: any) {
-  const [count, setCount] = useState();
-  const { fullName, email, nationality, nationalID, countryFlag } = guest;
+  const { fullName, email, nationalID, countryFlag } = guest;
 
   return (
     <form

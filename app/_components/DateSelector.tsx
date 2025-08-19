@@ -8,29 +8,24 @@ import {
   isWithinInterval,
   isSameDay,
 } from "date-fns";
-// import { useState } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { useReservation } from "./ReservationContext";
 
 function isAlreadyBooked(range: any, datesArr: any) {
-  return (
-    range.from &&
-    range.to &&
-    datesArr.some((date: any) =>
-      isWithinInterval(date, { start: range.from, end: range.to })
-    )
+  if (!range?.from || !range?.to) return false;
+
+  return datesArr.some((date: any) =>
+    isWithinInterval(date, { start: range.from, end: range.to })
   );
 }
 
 function DateSelector({ settings, cabin, bookDates }: any) {
   const { range, setRange, resetRange } = useReservation();
-  // CHANGE
 
-  const displayRange = isAlreadyBooked(range, bookDates) ? {} : range;
+  const displayRange = isAlreadyBooked(range, bookDates) ? undefined : range;
 
   const { regularPrice, discount } = cabin;
-  // const numNights = differenceInDays(range.to, range.from);
   const numNights =
     range?.from && range?.to ? differenceInDays(range.to, range.from) : 0;
 
@@ -42,10 +37,10 @@ function DateSelector({ settings, cabin, bookDates }: any) {
   return (
     <div className="flex flex-col justify-between">
       <DayPicker
-        className="  pt-12 place-self-center"
+        className="  pt-12 place-self-center rdp"
         mode="range"
         onSelect={setRange as any}
-        selected={range}
+        selected={displayRange}
         min={minBookingLength + 1}
         max={maxBookingLength}
         fromMonth={new Date()}
@@ -87,7 +82,7 @@ function DateSelector({ settings, cabin, bookDates }: any) {
           ) : null}
         </div>
 
-        {range.from || range.to ? (
+        {range?.from || range?.to ? (
           <button
             className="border border-primary-800 py-2 px-4 text-sm font-semibold"
             onClick={() => resetRange()}

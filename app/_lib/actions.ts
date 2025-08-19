@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 
 export async function updateGuest(formData: any) {
   const session = await auth();
+  const guestId = (session?.user as any).guestId;
 
   if (!session) throw new Error("You must be logged in");
 
@@ -21,7 +22,7 @@ export async function updateGuest(formData: any) {
   const { error } = await supabase
     .from("guests")
     .update(updateData)
-    .eq("id", session?.user?.guestId);
+    .eq("id", guestId);
 
   if (error) throw new Error("Guest could not be updated");
 
@@ -58,10 +59,11 @@ export async function createBooking(bookingData: any, formData: any) {
 
 export async function deleteReservation(bookingId: any) {
   const session = await auth();
+  const guestId = (session?.user as any).guestId;
 
   if (!session) throw new Error("You must be logged in");
 
-  const guestBookings = await getBookings(session?.user?.guestId);
+  const guestBookings = await getBookings(guestId);
   const guestBookingIds = guestBookings.map((booking) => booking.id);
 
   if (!guestBookingIds.includes(bookingId)) {
@@ -90,10 +92,10 @@ export async function signOutAction() {
 
 export async function updateBooking(formData: any) {
   const session = await auth();
-
+  const guestId = (session?.user as any).guestId;
   if (!session) throw new Error("You must be logged in");
 
-  const guestBookings = await getBookings(session?.user?.guestId);
+  const guestBookings = await getBookings(guestId);
   const guestBookingIds = guestBookings.map((booking) => booking.id);
 
   const bookingId = Number(formData.get("bookingId"));

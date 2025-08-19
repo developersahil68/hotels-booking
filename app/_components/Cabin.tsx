@@ -5,8 +5,7 @@ import TextExpander from "./TextExpander";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 
 export default function Cabin({ cabin }: any) {
-  const { id, name, maxCapacity, regularPrice, discount, image, description } =
-    cabin;
+  const { name, maxCapacity, image, description } = cabin;
   return (
     <div className="grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">
       <div className="relative scale-[1.15] -translate-x-3">
@@ -33,7 +32,7 @@ export default function Cabin({ cabin }: any) {
             <MapPinIcon className="h-5 w-5 text-primary-600" />
             <span className="text-lg">
               Located in the heart of the{" "}
-              <span className="font-bold">Dolomites</span> (Italy)
+              <span className="font-bold">Dolomites</span> (India)
             </span>
           </li>
           <li className="flex gap-3 items-center">

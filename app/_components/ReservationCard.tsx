@@ -13,13 +13,11 @@ export const formatDistanceFromNow = (dateStr: any) =>
 function ReservationCard({ booking }: any) {
   const {
     id,
-    guestId,
     startDate,
     endDate,
     numNights,
     totalPrice,
     numGuests,
-    status,
     created_at,
     cabins: { name, image },
   } = booking;

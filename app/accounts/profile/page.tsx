@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any*/
+
 import SelectCountry from "@/app/_components/SelectCountry";
 import UpdateProfileForm from "@/app/_components/UpdateProfileForm";
 import { auth } from "@/app/_lib/auth";
 import { getGuest } from "@/app/_lib/data-service";
 export default async function Page() {
   const session = await auth();
-  const guest = await getGuest(session?.user?.email);
+  const guestId = (session?.user as any).guestId;
+  const guest = await getGuest(guestId);
 
   return (
     <div>

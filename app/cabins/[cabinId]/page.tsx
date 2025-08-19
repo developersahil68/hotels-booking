@@ -1,15 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Image from "next/image";
-import {
-  getBookedDatesByCabinId,
-  getCabin,
-  getCabins,
-  getSettings,
-} from "@/app/_lib/data-service";
-import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
-import TextExpander from "@/app/_components/TextExpander";
-import DateSelector from "@/app/_components/DateSelector";
-import ReservationForm from "@/app/_components/ReservationForm";
+import { getCabin, getCabins } from "@/app/_lib/data-service";
+
 import Reservation from "@/app/_components/Reservation";
 import { Suspense } from "react";
 import Spinner from "@/app/_components/Spinner";
@@ -37,8 +28,6 @@ export default async function Page({ params }: any) {
   const param1 = await params;
   const param2 = param1.cabinId;
   const cabin = await getCabin(param2);
-  const settings = await getSettings();
-  const bookedDates = await getBookedDatesByCabinId(param2);
 
   return (
     <div>

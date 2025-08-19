@@ -1,18 +1,17 @@
 "use client";
 
-import { differenceInDays } from "date-fns";
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { differenceInDays } from "date-fns";
 import { useReservation } from "./ReservationContext";
 import { createBooking } from "../_lib/actions";
 import SubmitButton from "./SubmitButton";
 
 function ReservationForm({ cabin, user }: any) {
-  // CHANGE
   const { range, resetRange } = useReservation();
   const { maxCapacity, regularPrice, discount, id } = cabin;
 
-  const startDate = range.from;
-  const endDate = range.to;
+  const startDate = range?.from;
+  const endDate = range?.to;
 
   const numNights = differenceInDays(endDate, startDate);
   const cabinPrice = numNights * (regularPrice - discount);
