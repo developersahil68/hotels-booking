@@ -8,7 +8,9 @@ import Link from "next/link";
 export default async function Page() {
   // CHANGE
   const session = await auth();
-  const bookings: any = await getBookings(session?.user?.guestId);
+  const guestId = (session?.user as any).guestId;
+
+  const bookings: any = await getBookings(guestId);
 
   return (
     <div>
