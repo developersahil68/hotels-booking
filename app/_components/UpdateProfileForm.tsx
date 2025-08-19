@@ -7,8 +7,10 @@ import { updateGuest } from "../_lib/actions";
 import SubmitButton from "./SubmitButton";
 
 export default function UpdateProfileForm({ guest, children }: any) {
+  if (!guest) {
+    return <p className="text-red-500">Loading profile...</p>;
+  }
   const { fullName, email, nationalID, countryFlag } = guest;
-
   return (
     <form
       action={updateGuest}

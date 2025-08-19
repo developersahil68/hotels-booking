@@ -6,8 +6,10 @@ import { auth } from "@/app/_lib/auth";
 import { getGuest } from "@/app/_lib/data-service";
 export default async function Page() {
   const session = await auth();
-  const guestId = (session?.user as any).guestId;
-  const guest = await getGuest(guestId);
+  const email = (session?.user as any).email;
+  // const guestId = (session?.user as any).guestId;
+  const guest = await getGuest(email);
+  console.log(guest);
 
   return (
     <div>
@@ -20,14 +22,26 @@ export default async function Page() {
         faster and smoother. See you soon!
       </p>
 
-      <UpdateProfileForm guest={guest}>
+      {/* <UpdateProfileForm guest={guest}>
         <SelectCountry
           name="nationality"
           id="nationality"
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
-          defaultCountry={guest.nationality}
+          defaultCountry={guest?.nationality}
         />
-      </UpdateProfileForm>
+      </UpdateProfileForm> */}
+      {guest ? (
+        <UpdateProfileForm guest={guest}>
+          <SelectCountry
+            name="nationality"
+            id="nationality"
+            className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+            defaultCountry={guest.nationality}
+          />
+        </UpdateProfileForm>
+      ) : (
+        <p className="text-red-400">Guest not found. Please log in again.</p>
+      )}
     </div>
   );
 }
