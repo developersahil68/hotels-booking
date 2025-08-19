@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any*/
 import { getBookedDatesByCabinId, getCabin } from "@/app/_lib/data-service";
 
-export async function GET(request, { params }) {
+export async function GET(request: any, { params }: any) {
   const { cabinId } = params;
 
   try {
@@ -14,5 +15,3 @@ export async function GET(request, { params }) {
     return Response.json({ message: "Cabin not found" });
   }
 }
-
-// export async function POST() {}
